@@ -43,9 +43,10 @@ class PrinterVirtualLeds:
         
         # Register commands
         printer.register_event_handler("klippy:ready", self.handle_ready)
+        # init LED array
+        self.leds = []
 
     def handle_ready(self):
-        self.leds = []
         for chainName, leds in self.configChains:
             chain = self.printer.lookup_object(chainName)
             for led in leds:
