@@ -33,8 +33,12 @@ import logging
 
 class PrinterVirtualLeds:
     def __init__(self, config):
+
         self.printer = printer = config.get_printer()
         name = config.get_name().split()[1]
+
+        # Initialize LED array
+        self.leds = []
         
         # Initialize color data
         self.configChains = [self.parse_chain(line) for line in config.get('leds').split('\n') if line.strip()]
@@ -43,10 +47,9 @@ class PrinterVirtualLeds:
         
         # Register commands
         printer.register_event_handler("klippy:ready", self.handle_ready)
-        # init LED array
-        self.leds = []
 
     def handle_ready(self):
+        self.leds = []
         for chainName, leds in self.configChains:
             chain = self.printer.lookup_object(chainName)
             for led in leds:
@@ -54,11 +57,11 @@ class PrinterVirtualLeds:
         
     def parse_chain(self, chain):
         chain = chain.strip()
-        leds=[]
+        leds = []
         parms = [parameter.strip() for parameter in chain.split()
                     if parameter.strip()]
         if parms:
-            chainName=parms[0].replace(':',' ')
+            chainName = parms[0].replace(':',' ')
             ledIndices   = ''.join(parms[1:]).strip('()').split(',')
             for led in ledIndices:
                 if led:
