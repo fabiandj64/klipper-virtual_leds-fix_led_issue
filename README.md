@@ -21,7 +21,7 @@ With virtual_leds, you can define the nozzle leds as a separate chain:
 leds: neopixel:sb_leds (2,3)
 ```
 
-Then set them with a single command:
+Then set them with a single command: 
 
     SET_LED LED=nozzle_leds RED=1
     
@@ -32,7 +32,7 @@ These virtual_leds work exactly like regular led strips and can even be used wit
 The module can be installed into a existing Klipper installation with an install script.
 
     cd ~
-    git clone https://github.com/MapleLeafMakers/klipper-virtual_leds.git
+    git clone https://github.com/fabiandj64/klipper-virtual_leds-fix_led_issue.git
     cd klipper-virtual_leds
     ./install-virtual_leds.sh
 
