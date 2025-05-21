@@ -1,6 +1,6 @@
 [update_manager virtual_leds]
 type: git_repo
 path: ~/klipper-virtual_leds
-origin: https://github.com/MapleLeafMakers/klipper-virtual_leds.git
+origin: https://github.com/fabiandj64/klipper-virtual_leds-fix_led_issue.git
 is_system_service: False
 primary_branch: main
